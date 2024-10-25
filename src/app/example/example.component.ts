@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MessageService } from 'primeng/api';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
+import { OcrService } from '../services/ocr.service';
 
 interface UploadEvent {
   originalEvent: Event;
@@ -20,17 +20,17 @@ interface UploadEvent {
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    FileUploadModule, ToastModule, CommonModule,HttpClientModule
-
-    
+    FileUploadModule, 
+    ToastModule, 
+    CommonModule  
   ],
-  providers : [MessageService],
+  providers : [MessageService,OcrService],
   templateUrl: './example.component.html',
   styleUrl: './example.component.scss'
 })
 export class ExampleComponent {
   fileForm!: FormGroup;
-
+  parsedText: string = '';
   // constructor(private fb: FormBuilder) {}
 
   // ngOnInit(): void {
@@ -47,7 +47,7 @@ export class ExampleComponent {
   // }
   uploadedFiles: any[] = [];
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService,private _ocrService:OcrService) {}
 
   onUpload(event:any) {
       for(let file of event.files) {
@@ -59,5 +59,9 @@ export class ExampleComponent {
 
   submitData(){
     console.log("this is the data",this.uploadedFiles)
+    this._ocrService.processOCR(this.uploadedFiles[0]).subscribe((res:any)=>{
+      console.log("response from ocr",res)
+      this.parsedText = res;
+    })
   }
 }
