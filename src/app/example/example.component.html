@@ -19,7 +19,7 @@
           (onUpload)="onUpload($event)" 
           [multiple]="true" 
           accept="image/*" 
-          maxFileSize="100000000">
+          maxFileSize="1049000">
               <ng-template pTemplate="content">
                   <ul *ngIf="uploadedFiles.length">
                       <li *ngFor="let file of uploadedFiles">
