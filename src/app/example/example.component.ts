@@ -8,10 +8,10 @@ import { MessageService } from 'primeng/api';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 
-// interface UploadEvent {
-//   originalEvent: Event;
-//   files: File[];
-// }
+interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
+}
 
 @Component({  
   selector: 'app-example',
@@ -21,6 +21,8 @@ import { ToastModule } from 'primeng/toast';
     MatFormFieldModule,
     MatInputModule,
     FileUploadModule, ToastModule, CommonModule,HttpClientModule
+
+    
   ],
   providers : [MessageService],
   templateUrl: './example.component.html',
