@@ -1,0 +1,83 @@
+/* Container styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #d2f4f9; /* Light cyan color */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Title styling */
+  .title {
+    font-family: 'Arial', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #7b49c3; /* Purple color */
+    margin-bottom: 20px;
+  }
+  
+  .title small {
+    font-size: 1.2rem;
+    font-weight: normal;
+    display: block;
+    color: #000;
+  }
+  
+  /* Form styling */
+  .form {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  /* Input field styling */
+  mat-form-field {
+    width: 100%;
+    background: #f9f9f9; /* Light background for the input field */
+    border-radius: 30px;
+    padding: 5px;
+  }
+  
+  mat-icon {
+    color: #7b49c3; /* Purple icon */
+  }
+  
+  input[type="file"] {
+    border-radius: 20px;
+  }
+  
+  /* Button styling */
+  .convert-button {
+    width: 100%;
+    background-color: #7b49c3; /* Purple button */
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .convert-button:hover {
+    background-color: #5d3b9c; /* Darker purple */
+    transform: translateY(-3px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .title {
+      font-size: 2rem;
+    }
+    
+    .form {
+      width: 90%;
+    }
+    
+    .convert-button {
+      font-size: 0.9rem;
+    }
+  }
+  

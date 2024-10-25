@@ -1,0 +1,39 @@
+<div class="container">
+    <h1 class="title">
+      Image <small>to</small> PDF
+    </h1>
+  
+    <!-- <form [formGroup]="fileForm" (ngSubmit)="onSubmit()" class="form">
+      <mat-form-field appearance="fill">
+        <input matInput matFileInput formControlName="file" placeholder="Upload Image">
+        <mat-icon matSuffix>attach_file</mat-icon>
+      </mat-form-field>
+  
+    </form> -->
+
+    <div class="card flex justify-content-center">
+      <p-toast />
+      <p-fileUpload 
+          name="demo[]" 
+          url="https://www.primefaces.org/cdn/api/upload.php" 
+          (onUpload)="onUpload($event)" 
+          [multiple]="true" 
+          accept="image/*" 
+          maxFileSize="100000000">
+              <ng-template pTemplate="content">
+                  <ul *ngIf="uploadedFiles.length">
+                      <li *ngFor="let file of uploadedFiles">
+                          {{ file.name }} - {{ file.size }} bytes
+                      </li>
+                  </ul>
+              </ng-template>
+      </p-fileUpload>
+  </div>
+    
+    <button mat-raised-button color="primary" class="convert-button" (click)="submitData()">
+      Convert
+    </button>
+  </div>
+
+  <!-- [disabled]="!fileForm.valid" -->
+  
