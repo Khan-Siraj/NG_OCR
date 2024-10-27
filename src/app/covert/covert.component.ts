@@ -7,6 +7,7 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
+import { OcrService } from '../services/ocr.service';
 @Component({
   selector: 'app-covert',
   standalone: true,
@@ -25,8 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class CovertComponent {
   uploadedFiles: any[] = [];
-
-  constructor(private messageService: MessageService) { }
+  parsedText: string = '';
+  constructor(private messageService: MessageService,private _ocrService:OcrService) { }
 
   onUpload(event: any) {
     for (let file of event.files) {
@@ -37,6 +38,10 @@ export class CovertComponent {
   }
 
   submitData() {
-    console.log("this is the data", this.uploadedFiles)
+    console.log("this is the data",this.uploadedFiles)
+    this._ocrService.processOCR(this.uploadedFiles[0]).subscribe((res:any)=>{
+      console.log("response from ocr",res)
+      this.parsedText = res;
+    })
   }
 }

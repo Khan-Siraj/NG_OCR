@@ -25,9 +25,16 @@
     max-width: 30rem;
 }
 
-.image{
-    
+.covert-container {
+    min-width: 30rem;
 }
+
+.covert-container-title {
+    font-size: 18px;
+}
+
+.image {}
+
 /* Title styling */
 .title {
     font-family: 'Arial', sans-serif;
@@ -36,6 +43,10 @@
     color: #7b49c3;
     /* Purple color */
     margin-bottom: 20px;
+
+    & img {
+        width: 30rem;
+    }
 }
 
 .title small {
@@ -81,17 +92,48 @@ input[type="file"] {
     border-radius: 20px;
     font-size: 1rem;
     transition: transform 0.3s ease-in-out;
-
 }
 
-.convert-button:hover {
+/* Button styling */
+.clear-button {
+    width: 30%;
+    background-color: #eb4e55;
+    /* Purple button */
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.convert-button:hover .clear-button:hover {
     background-color: #5d3b9c;
     /* Darker purple */
     transform: translateY(-3px);
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
+.text-area {
+    max-width: 30rem;
+    min-height: 10rem;
+}
+
+.result {
+    font-size: 50px;
+    color: #895fc2;
+}
+
+
+
+// /* Responsive Design */
+// @media (max-width: 600px) {
+
+// }
+
+/* Mobile (phone) */
+@media (max-width: 599px) {
+
+    /* Styles for mobile screens */
     .title {
         font-size: 2rem;
     }
@@ -102,5 +144,57 @@ input[type="file"] {
 
     .convert-button {
         font-size: 0.9rem;
+    }
+
+    .main {
+        flex-direction: column;
+    }
+
+    .container {
+        min-width: 20rem;
+    }
+    .covert-container{
+        min-width: 20rem;
+    }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 1023px) {
+
+    /* Styles for tablet screens */
+    .title {
+        font-size: 3rem;
+    }
+
+    .form {
+        width: 90%;
+    }
+
+    .convert-button {
+        font-size: 1rem;
+    }
+}
+
+/* Laptop/Desktop */
+@media (min-width: 1024px) {
+
+    /* Styles for laptop and desktop screens */
+    .title {
+        font-size: 4rem;
+    }
+
+    .form {
+        width: 90%;
+    }
+
+    .convert-button {
+        font-size: 1.1rem;
+    }
+
+    .container {
+        min-width: 25rem;
+    }
+    .covert-container{
+        min-width: 25rem;
     }
 }

@@ -5,13 +5,14 @@
             <!-- panel -->
             <div class="container">
                 <div class="title">
-                    <span class="image">
+                    <!-- <span class="image">
                         Image 
                     </span>
                     <small>to</small>
                     <span>
                         PDF
-                    </span>
+                    </span> -->
+                    <img src="image.png" alt="Logo">
                 </div>
 
                 <div class="card flex justify-content-center">
@@ -36,28 +37,18 @@
 
 
         <!-- coverted area -->
-        <div>
-            <div class="container">
-                <h1 class="title">
-                    Image <small>to</small> PDF
-                </h1>
-
-                <div class="card flex justify-content-center">
-                    <p-toast />
-                    <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
-                        (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" maxFileSize="1049000">
-                        <ng-template pTemplate="content">
-                            <ul *ngIf="uploadedFiles.length">
-                                <li *ngFor="let file of uploadedFiles">
-                                    {{ file.name }} - {{ file.size }} bytes
-                                </li>
-                            </ul>
-                        </ng-template>
-                    </p-fileUpload>
+        <div class="right-side">
+            <div class="covert-container container">
+                <div class="covert-container-title">
+                    Text
                 </div>
-
-                <button mat-raised-button color="primary" class="convert-button" (click)="submitData()">
-                    Convert
+                <div class="text-area">
+                    <div id="result">
+                        {{parsedText}}
+                    </div>
+                </div>
+                <button mat-raised-button color="primary" class="clear-button" (click)="submitData()">
+                    Clear
                 </button>
             </div>
         </div>
