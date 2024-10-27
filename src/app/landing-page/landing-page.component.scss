@@ -1,7 +1,7 @@
 .landing-page {
     font-family: 'Arial', sans-serif;
     color: white;
-    background: linear-gradient(135deg, #5ea2ff, #ff6e70);
+    // background: linear-gradient(135deg, #5ea2ff, #ff6e70);
     min-height: 100vh;
   
     /* Navigation Bar */
@@ -29,7 +29,7 @@
     /* Hero Section */
     .hero-section {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       text-align: center;
       padding: 60px 20px;
@@ -86,4 +86,11 @@
       }
     }
   }
-  
+
+  .btn{
+    margin-left: 10px;
+  }
+
+  .slide-button:hover {
+    transform: scale(1.1);
+  }

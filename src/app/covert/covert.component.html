@@ -1,7 +1,7 @@
 <div>
     <div class="main">
         <!-- Form -->
-        <div class="left-side">
+        <div class="left-side" [@slideUp] [@slideInRight]="parsedText != '' ? 'enter' : ''"> 
             <!-- panel -->
             <div class="container">
                 <div class="title">
@@ -37,7 +37,8 @@
 
 
         <!-- coverted area -->
-        <div class="right-side">
+        @if (parsedText) {
+        <div class="right-side" [@slideUp]>
             <div class="covert-container container">
                 <div class="covert-container-title">
                     Text
@@ -47,10 +48,11 @@
                         {{parsedText}}
                     </div>
                 </div>
-                <button mat-raised-button color="primary" class="clear-button" (click)="submitData()">
+                <button mat-raised-button color="primary" class="clear-button" (click)="clear()">
                     Clear
                 </button>
             </div>
         </div>
+        }
     </div>
 </div>

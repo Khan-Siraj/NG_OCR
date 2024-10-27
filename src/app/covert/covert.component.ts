@@ -8,6 +8,7 @@ import { ToastModule } from 'primeng/toast';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { OcrService } from '../services/ocr.service';
+import { slideInLeft, slideInRight, slideUp } from '../animation';
 @Component({
   selector: 'app-covert',
   standalone: true,
@@ -20,14 +21,15 @@ import { OcrService } from '../services/ocr.service';
     CommonModule,
     HttpClientModule
   ],
-  providers : [MessageService],
+  providers: [MessageService],
   templateUrl: './covert.component.html',
-  styleUrl: './covert.component.scss'
+  styleUrl: './covert.component.scss',
+  animations : [slideInLeft,slideInRight,slideUp]
 })
 export class CovertComponent {
   uploadedFiles: any[] = [];
-  parsedText: string = '';
-  constructor(private messageService: MessageService,private _ocrService:OcrService) { }
+  parsedText = ''
+  constructor(private messageService: MessageService, private _ocrService: OcrService) { }
 
   onUpload(event: any) {
     for (let file of event.files) {
@@ -38,10 +40,15 @@ export class CovertComponent {
   }
 
   submitData() {
-    console.log("this is the data",this.uploadedFiles)
-    this._ocrService.processOCR(this.uploadedFiles[0]).subscribe((res:any)=>{
-      console.log("response from ocr",res)
+    this.parsedText = 'skdjsjkb'
+    console.log("this is the data", this.uploadedFiles)
+    this._ocrService.processOCR(this.uploadedFiles[0]).subscribe((res: any) => {
+      console.log("response from ocr", res)
       this.parsedText = res;
     })
+  }
+
+  clear() {
+    this.parsedText = ''
   }
 }

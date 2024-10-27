@@ -116,6 +116,8 @@ input[type="file"] {
 .text-area {
     max-width: 30rem;
     min-height: 10rem;
+    max-height: 74vh;
+    overflow: scroll;
 }
 
 .result {
@@ -153,7 +155,8 @@ input[type="file"] {
     .container {
         min-width: 20rem;
     }
-    .covert-container{
+
+    .covert-container {
         min-width: 20rem;
     }
 }
@@ -194,7 +197,8 @@ input[type="file"] {
     .container {
         min-width: 25rem;
     }
-    .covert-container{
+
+    .covert-container {
         min-width: 25rem;
     }
 }
