@@ -1,38 +1,65 @@
 <div>
-    <div>
+    <div class="main">
         <!-- Form -->
-        <div>
+        <div class="left-side">
             <!-- panel -->
-            <div class="panel" >
-                <div class="panel-heading" >Image to PDF converter</div>
-
-                <div>
-                    <form [formGroup]="form">
-                        <!-- <mat-form-field>
-                            <ngx-mat-file-input formControlName="file" placeholder="Basic Input" ></ngx-mat-file-input>
-                            <mat-icon matSuffix>folder</mat-icon>
-                        </mat-form-field> -->
-
-                        <mat-form-field>
-                            <ngx-mat-file-input formControlName="file" placeholder="Required input" valuePlaceholder="No file selected" required></ngx-mat-file-input>
-                            <mat-icon matSuffix>folder</mat-icon>
-                            <mat-error *ngIf="form.get('file')?.hasError('required')">
-                              Please select a file
-                            </mat-error>
-                            <mat-error *ngIf="form.get('file')?.hasError('maxContentSize')">
-                              The total size must not exceed {{form.get('file')?.getError('maxContentSize').maxSize | byteFormat}} ({{form.get('file')?.getError('maxContentSize').actualSize
-                              | byteFormat}}).
-                            </mat-error>
-                          </mat-form-field>
-                    </form>
+            <div class="container">
+                <div class="title">
+                    <span class="image">
+                        Image 
+                    </span>
+                    <small>to</small>
+                    <span>
+                        PDF
+                    </span>
                 </div>
+
+                <div class="card flex justify-content-center">
+                    <p-toast />
+                    <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+                        (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" maxFileSize="1049000">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">
+                                    {{ file.name }} - {{ file.size }} bytes
+                                </li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+
+                <button mat-raised-button color="primary" class="convert-button" (click)="submitData()">
+                    Convert
+                </button>
             </div>
         </div>
 
 
         <!-- coverted area -->
         <div>
+            <div class="container">
+                <h1 class="title">
+                    Image <small>to</small> PDF
+                </h1>
 
+                <div class="card flex justify-content-center">
+                    <p-toast />
+                    <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+                        (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" maxFileSize="1049000">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">
+                                    {{ file.name }} - {{ file.size }} bytes
+                                </li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+
+                <button mat-raised-button color="primary" class="convert-button" (click)="submitData()">
+                    Convert
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -2,40 +2,41 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FileValidator, MaterialFileInputModule } from 'ngx-material-file-input';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { FileUploadModule } from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-covert',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule,
-    MaterialFileInputModule
+    FileUploadModule,
+    ToastModule,
+    CommonModule,
+    HttpClientModule
   ],
+  providers : [MessageService],
   templateUrl: './covert.component.html',
   styleUrl: './covert.component.scss'
 })
 export class CovertComponent {
+  uploadedFiles: any[] = [];
 
-  /**
- * In this example, it's 100 MB (=100 * 2 ** 20).
- */
+  constructor(private messageService: MessageService) { }
 
-  readonly maxSize = 40;
-  form: FormGroup
+  onUpload(event: any) {
+    for (let file of event.files) {
+      this.uploadedFiles.push(file);
+    }
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      file: [null, Validators.required, FileValidator.maxContentSize(this.maxSize)]
-    })
-
+    this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
   }
 
-  onSubmit() {
-    console.log(this.form.value)
+  submitData() {
+    console.log("this is the data", this.uploadedFiles)
   }
-
 }
