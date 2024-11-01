@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -19,7 +19,8 @@ import { slideInLeft, slideInRight, slideUp } from '../animation';
     FileUploadModule,
     ToastModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [MessageService],
   templateUrl: './covert.component.html',
@@ -40,8 +41,6 @@ export class CovertComponent {
   }
 
   submitData() {
-    this.parsedText = 'skdjsjkb'
-    console.log("this is the data", this.uploadedFiles)
     this._ocrService.processOCR(this.uploadedFiles[0]).subscribe((res: any) => {
       console.log("response from ocr", res)
       this.parsedText = res;
