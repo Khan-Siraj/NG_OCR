@@ -1,5 +1,9 @@
-export interface ApiResponse {
+export interface ApiSuccessResponse {
     success: boolean;
-    data?:any
-    error?: string;
+    data:any
+}
+
+export interface ApiErrorResponse {
+    success: boolean;
+    error: string;
 }

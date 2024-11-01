@@ -15,7 +15,7 @@ export const errorInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
           verticalPosition: 'top',
         });
       }
-      return throwError(error);  // Returning an observable with error message
+      return throwError(error.error);  // Returning an observable with error message
     })
   );
 };
