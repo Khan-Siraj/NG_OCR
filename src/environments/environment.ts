@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    API_URL: 'https://nest-ocr.vercel.app/',
+    API_URL: 'https://nest-ocr.onrender.com/',
 };
